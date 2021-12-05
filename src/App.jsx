@@ -1,26 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 function App() {
-  document.title = "Ian Cowan";
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Ian Cowan</h1>
-        <p>Something new and great is coming soon...</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+        <Routes>
+          <Route path="/" element={<RenderHome />} />
+          <Route path="/projects" element={<RenderProjects />} />
+          <Route path="/contact" element={<RenderContact />} />
+        </Routes>
+    </Router>
   );
+}
+
+function setTitle(page) {
+  document.title = "Ian Cowan | " + page;
+}
+
+function RenderHome() {
+  setTitle("Home");
+  return Home();
+}
+
+function RenderProjects() {
+  setTitle("Projects");
+  return Projects();
+}
+
+function RenderContact() {
+  setTitle("Contact");
+  return Contact();
 }
 
 export default App;
