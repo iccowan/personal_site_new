@@ -66,3 +66,58 @@ nav li a.active, nav li a:hover {
     background-color: #044343;
 }
 
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+                
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transford: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transfordm: translate3d(4px, 0, 0);
+    }
+}
+
+@keyframes wiggle {
+    0% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+    100% { transform: rotate(-10deg); }
+}
+li.wiggle-icon i {
+    animation: wiggle .2s infinite;
+}
+
+@keyframes move-right {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(30px, 0);
+        opacity: 0;
+    }
+}
+li.arrow-move-right i {
+    animation: move-right 1s infinite;
+}
+
+@keyframes move-left {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-30px, 0);
+        opacity: 0;
+    }
+}
+li.arrow-move-left i {
+    animation: move-left 1s infinite;
+}
+

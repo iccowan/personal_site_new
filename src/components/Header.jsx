@@ -15,16 +15,16 @@ function Header() {
   return (
     <nav>
       <ul id="header-ul">
-        <li>
+        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle}>
           <Link to="/" className={activePage.home}><i className="fas fa-home"></i><span className="hidden header-label">&nbsp;&nbsp;&nbsp;Home</span></Link>
         </li>
-        <li>
+        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle}>
           <Link to="/projects" className={activePage.projects}><i className="fas fa-file-code"></i><span className="hidden header-label">&nbsp;&nbsp;&nbsp;Projects</span></Link>
         </li>
-        <li>
+        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle}>
           <Link to="/contact" className={activePage.contact}><i className="fas fa-file-signature"></i><span className="hidden header-label">&nbsp;&nbsp;&nbsp;Contact</span></Link>
         </li>
-        <li>
+        <li onMouseEnter={makeArrowMove} onMouseLeave={stopArrowMove}>
           <button id="expand-header" onClick={expandHeader}><i id="collapseIcon" className="fas fa-arrow-right"></i><span className="hidden header-label">&nbsp;&nbsp;&nbsp;Collapse</span></button>
         </li>
       </ul>
@@ -85,6 +85,27 @@ function expandHeader() {
     collapseIcon.classList.remove('fa-arrow-left');
     collapseIcon.classList.add('fa-arrow-right');
   }
+}
+
+function makeIconWiggle(e) {
+  e.currentTarget.classList.add('wiggle-icon');
+}
+
+function stopIconWiggle(e) {
+  e.currentTarget.classList.remove('wiggle-icon');
+}
+
+function makeArrowMove(e) {
+  let arrowClassList = e.target.childNodes[0].classList;
+
+  if (arrowClassList.contains('fa-arrow-right'))
+    e.currentTarget.classList.add('arrow-move-right'); 
+  else
+    e.currentTarget.classList.add('arrow-move-left');
+}
+
+function stopArrowMove(e) {
+  e.currentTarget.classList = [];
 }
 
 export default Header;
