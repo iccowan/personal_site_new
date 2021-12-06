@@ -1,0 +1,68 @@
+nav ul {
+    box-shadow: 5px 10px 20px 5px #044343;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 60px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+
+    transition: width 0.25s linear;
+}
+
+nav ul.expanded {
+    width: 200px;
+    text-align: right;
+    transition: width 0.25s linear;
+}
+
+nav li {
+    height: 60px;
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+nav li a, button#expand-header {
+    display: block;
+    border: none;
+    color: inherit;
+    margin: 0;
+    text-decoration: none;
+    background-color: inherit;
+    overflow: hidden;
+    padding-top: 21px;
+    padding-bottom: 21px;
+
+    font-size: 18px;
+}
+
+nav ul.expanded li a {
+    padding-right: 10px;
+}
+
+button#expand-header {
+    width: 60px;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+
+    transition: width 0.25s linear;
+}
+
+nav ul.expanded button#expand-header {
+    float: right;
+    width: 200px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+button#expand-header:hover {
+    cursor: pointer;
+}
+
+nav li a.active, nav li a:hover {
+    background-color: #044343;
+}
+
