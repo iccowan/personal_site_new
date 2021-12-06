@@ -1,6 +1,5 @@
 import './App.css';
 import {
-  BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
@@ -9,15 +8,16 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 
+import PageNotFound from "./pages/PageNotFound";
+
 function App() {
   return (
-    <Router>
-        <Routes>
-          <Route path="/" element={<RenderHome />} />
-          <Route path="/projects" element={<RenderProjects />} />
-          <Route path="/contact" element={<RenderContact />} />
-        </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<RenderHome />} />
+      <Route path="/projects" element={<RenderProjects />} />
+      <Route path="/contact" element={<RenderContact />} />
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
   );
 }
 
