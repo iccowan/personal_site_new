@@ -14,18 +14,18 @@ function Header() {
 
   return (
     <nav>
-      <ul id="header-ul">
-        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle}>
-          <Link to="/" className={activePage.home}><i className="fas fa-home"></i><span className="hidden header-label">&nbsp;&nbsp;&nbsp;Home</span></Link>
+      <ul id="header-ul" data-testid="header-nav-ul">
+        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle} data-testid="header-nav-li-ian-cowan">
+          <Link to="/" className={activePage.home}><i className="fas fa-home"></i><span className="hidden header-label" data-testid="header-nav-span-ian-cowan">&nbsp;&nbsp;&nbsp;Ian Cowan</span></Link>
         </li>
-        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle}>
-          <Link to="/projects" className={activePage.projects}><i className="fas fa-file-code"></i><span className="hidden header-label">&nbsp;&nbsp;&nbsp;Projects</span></Link>
+        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle} data-testid="header-nav-li-projects">
+          <Link to="/projects" className={activePage.projects}><i className="fas fa-file-code"></i><span className="hidden header-label" data-testid="header-nav-span-projects">&nbsp;&nbsp;&nbsp;Projects</span></Link>
         </li>
-        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle}>
-          <Link to="/contact" className={activePage.contact}><i className="fas fa-file-signature"></i><span className="hidden header-label">&nbsp;&nbsp;&nbsp;Contact</span></Link>
+        <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle} data-testid="header-nav-li-contact">
+          <Link to="/contact" className={activePage.contact}><i className="fas fa-file-signature"></i><span className="hidden header-label" data-testid="header-nav-span-contact">&nbsp;&nbsp;&nbsp;Contact</span></Link>
         </li>
-        <li onMouseEnter={makeArrowMove} onMouseLeave={stopArrowMove}>
-          <button id="expand-header" onClick={expandHeader}><i id="collapseIcon" className="fas fa-arrow-right"></i><span className="hidden header-label">&nbsp;&nbsp;&nbsp;Collapse</span></button>
+        <li onMouseEnter={makeArrowMove} onMouseLeave={stopArrowMove} data-testid="header-nav-li-collapseButton">
+          <button id="expand-header" onClick={expandHeader} data-testid="header-nav-collapseButton"><i id="collapseIcon" className="fas fa-arrow-right"></i><span className="hidden header-label" data-testid="header-nav-span-collapse-button">&nbsp;&nbsp;&nbsp;Collapse</span></button>
         </li>
       </ul>
     </nav>
@@ -96,12 +96,12 @@ function stopIconWiggle(e) {
 }
 
 function makeArrowMove(e) {
-  let arrowClassList = e.target.childNodes[0].classList;
+  let headerUl = document.getElementById('header-ul');
 
-  if (arrowClassList.contains('fa-arrow-right'))
-    e.currentTarget.classList.add('arrow-move-right'); 
+  if (headerUl.classList.contains('expanded'))
+    e.currentTarget.classList.add('arrow-move-left'); 
   else
-    e.currentTarget.classList.add('arrow-move-left');
+    e.currentTarget.classList.add('arrow-move-right');
 }
 
 function stopArrowMove(e) {

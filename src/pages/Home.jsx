@@ -1,7 +1,11 @@
 import React from 'react';
 
 function Home() {
-  return <h1>Ian Cowan - Home</h1>;
+  return (
+    <div data-testid="page-home">
+      <h1>Ian Cowan - Home</h1>
+    </div>
+  );
 }
 
 export default Home;

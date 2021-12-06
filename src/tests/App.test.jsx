@@ -7,51 +7,53 @@ import Home from '../pages/Home';
 import Projects from '../pages/Projects';
 import Contact from '../pages/Contact';
 
-jest.mock('../pages/Home.jsx');
-jest.mock('../pages/Projects.jsx');
-jest.mock('../pages/Contact.jsx');
-
 test('home page renders by default', () => {
-  Home.mockImplementation(() => <div>HomeMock</div>);
   render(
     <MemoryRouter>
       <App />
     </MemoryRouter>
   );
 
-  expect(screen.getByText('HomeMock')).toBeInTheDocument();
+  expect(screen.getByTestId('page-home')).toBeInTheDocument();
 });
 
 test('home page renders when navigating to /', () => {
-  Home.mockImplementation(() => <div>HomeMock</div>);
   render(
     <MemoryRouter initialEntries={['/']}>
       <App />
     </MemoryRouter>
   );
   
-  expect(screen.getByText('HomeMock')).toBeInTheDocument();
+  expect(screen.getByTestId('page-home')).toBeInTheDocument();
 });
 
 test('projects page renders at /projects', () => {
-  Projects.mockImplementation(() => <div>ProjectsMock</div>);
   render(
     <MemoryRouter initialEntries={['/projects']}>
       <App />
     </MemoryRouter>
   );
 
-  expect(screen.getByText('ProjectsMock')).toBeInTheDocument();
+  expect(screen.getByTestId('page-projects')).toBeInTheDocument();
 });
 
 test('contact page renders at /contact', () => {
-  Contact.mockImplementation(() => <div>ContactMock</div>);
   render(
     <MemoryRouter initialEntries={['/contact']}>
       <App />
     </MemoryRouter>
   );
 
-  expect(screen.getByText('ContactMock')).toBeInTheDocument();
+  expect(screen.getByTestId('page-contact')).toBeInTheDocument();
+});
+
+test('page not found page renders at any non-existent url', () => {
+  render(
+    <MemoryRouter initialEntries={['/a-route-that-doesnt-exist']}>
+      <App />
+    </MemoryRouter>
+  );
+
+  expect(screen.getByTestId('page-not-found')).toBeInTheDocument();
 });
 
