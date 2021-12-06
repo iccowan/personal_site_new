@@ -9,13 +9,13 @@ nav ul {
     padding: 0;
     text-align: center;
 
-    transition: width 0.25s linear;
+    transition: width 0.25s ease-in;
 }
 
 nav ul.expanded {
     width: 200px;
     text-align: right;
-    transition: width 0.25s linear;
+    transition: width 0.25s ease-in;
 }
 
 nav li {

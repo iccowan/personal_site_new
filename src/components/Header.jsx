@@ -2,6 +2,8 @@ import React from 'react';
 import '../css/Header.css';
 import {Link, useLocation} from 'react-router-dom';
 
+var mouseOverExpandHeaderButton = false;
+
 function Header() {
   const location = useLocation();
   let url = location.pathname.split('/')[1];
@@ -45,6 +47,8 @@ function expandHeader() {
       bod.classList.add('header-open');
     };
 
+    updateArrowMove();
+
     setTimeout(function() {
       // Unhide the labels
       for (var label of labels) {
@@ -74,6 +78,8 @@ function expandHeader() {
       bod.classList.remove('header-open');
     };
 
+    updateArrowMove();
+
     // Hide the labels
     for (var label of labels) {
       label.classList.remove('not-hidden-fade');
@@ -97,15 +103,31 @@ function stopIconWiggle(e) {
 
 function makeArrowMove(e) {
   let headerUl = document.getElementById('header-ul');
+  setArrowMove(headerUl, e.currentTarget);
+  mouseOverExpandHeaderButton = true;
+}
 
-  if (headerUl.classList.contains('expanded'))
-    e.currentTarget.classList.add('arrow-move-left'); 
-  else
-    e.currentTarget.classList.add('arrow-move-right');
+function updateArrowMove() {
+  let headerUl = document.getElementById('header-ul');
+  let expandLi = document.getElementById('expand-header').parentElement;
+
+  if (mouseOverExpandHeaderButton)
+    setArrowMove(headerUl, expandLi);
+}
+
+function setArrowMove(headerUl, target) {
+  if (headerUl.classList.contains('expanded')) {
+    target.classList.remove('arrow-move-right');
+    target.classList.add('arrow-move-left'); 
+  } else {
+    target.classList.remove('arrow-move-left');
+    target.classList.add('arrow-move-right');
+  }
 }
 
 function stopArrowMove(e) {
   e.currentTarget.classList = [];
+  mouseOverExpandHeaderButton = false;
 }
 
 export default Header;

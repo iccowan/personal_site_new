@@ -201,8 +201,6 @@ test('Expand button icon moves in the proper direction on hover', () => {
   expect(screen.getByTestId('header-nav-li-collapseButton').classList.contains('arrow-move-right')).toBeTruthy();
   expect(screen.getByTestId('header-nav-li-collapseButton').classList.contains('arrow-move-left')).toBeFalsy();
 
-  fireEvent.mouseLeave(listItem);
-
   let collapseButton = screen.getByRole('button');
   fireEvent.click(collapseButton);
 
