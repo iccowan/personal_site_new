@@ -1,6 +1,15 @@
 import React from 'react-dom';
 import './css/App.css';
 import {
+  Animator,
+  ScrollContainer,
+  ScrollPage,
+  batch,
+  Fade,
+  Move,
+  Sticky
+} from 'react-scroll-motion';
+import {
   Routes,
   Route
 } from "react-router-dom";
@@ -27,12 +36,14 @@ function App() {
         <Header />
       </div>
       <div className="body">
-        <Routes>
-          <Route path="/" element={<RenderHome />} />
-          <Route path="/projects" element={<RenderProjects />} />
-          <Route path="/contact" element={<RenderContact />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        <ScrollContainer>
+          <Routes>
+            <Route path="/" element={<RenderHome />} />
+            <Route path="/projects" element={<RenderProjects />} />
+            <Route path="/contact" element={<RenderContact />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </ScrollContainer>
       </div>
     </div>
   );
@@ -72,8 +83,7 @@ function setTitle(page) {
 export function GeneratePageTitle(params) {
   return (
     <div data-testid="page-title">
-      <h1>{params.title}</h1>
-      <hr />
+      <h1 class="page-title">{params.title}</h1>
     </div>
   );
 }
