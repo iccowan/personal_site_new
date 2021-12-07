@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import expectedNodeVersion from '../../npm_version';
+import expectedNodeVersion from '../../node_version';
 
 test('node.js version matches', () => {
   var nodeVersion = process.version;

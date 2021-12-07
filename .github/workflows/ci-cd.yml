@@ -1,7 +1,7 @@
 name: ci-cd
 on: push
 env:
-    NODE_VERSION: '14.18.0'
+    NODE_VERSION: '16.13.1'
 
 jobs:
     build:
