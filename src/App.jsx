@@ -1,3 +1,4 @@
+import React from 'react-dom';
 import './css/App.css';
 import {
   Routes,
@@ -11,7 +12,13 @@ import Contact from "./pages/Contact";
 
 import PageNotFound from "./pages/PageNotFound";
 
+/**
+  * Main App
+  *
+  * @return {React.FC} The main app HTML
+  */
 function App() {
+  // Include all of the external scripts
   includeScripts();
 
   return (
@@ -31,11 +38,14 @@ function App() {
   );
 }
 
+/** Includes the listed external scripts in the view */
 function includeScripts() {
+  // Add new scripts here
   const scripts = [
     'https://kit.fontawesome.com/d556180f35.js'
   ];
 
+  // Loop through each script and add them as a script element
   scripts.forEach(script => {
     const scriptElem = document.createElement("script");
     scriptElem.src = script;
@@ -44,20 +54,41 @@ function includeScripts() {
   });
 }
 
+/**
+ * Set the title of the page in the following format:
+ * '[Page Name] | Ian Cowan'
+ *
+ * @param {string} page - The name of the current page
+ */
 function setTitle(page) {
-  document.title = "Ian Cowan | " + page;
+  document.title = page + ' | Ian Cowan';
 }
 
+/**
+ * Renders the home page
+ *
+ * @return {React.FC} = The home HTML
+ */
 function RenderHome() {
   setTitle("Home");
   return Home();
 }
 
+/**
+ * Renders the projects page
+ *
+ * @return {React.FC} - The projects HTML
+ */
 function RenderProjects() {
   setTitle("Projects");
   return Projects();
 }
 
+/**
+ * Renders the contact page
+ *
+ * @return {React.FC} - The contact HTML
+ */
 function RenderContact() {
   setTitle("Contact");
   return Contact();

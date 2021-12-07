@@ -2,9 +2,16 @@ import React from 'react';
 import '../css/Header.css';
 import {Link, useLocation} from 'react-router-dom';
 
+/** Keeps track of whether the mouse is over the header button or not */
 var mouseOverExpandHeaderButton = false;
 
+/**
+  * Header Component
+  *
+  * @return {React.FC} The header HTML
+  */
 function Header() {
+  // Get the active page
   const location = useLocation();
   let url = location.pathname.split('/')[1];
 
@@ -34,6 +41,7 @@ function Header() {
   );
 }
 
+/** Expands the header and moves the body with it */
 function expandHeader() {
   let labels = document.getElementsByClassName('header-label');
   if (labels[0].classList.contains('hidden')) {
@@ -47,6 +55,7 @@ function expandHeader() {
       bod.classList.add('header-open');
     };
 
+    // Update the direction the arrow should be moving
     updateArrowMove();
 
     setTimeout(function() {
@@ -78,6 +87,7 @@ function expandHeader() {
       bod.classList.remove('header-open');
     };
 
+    // Update the direction the arrow should be moving
     updateArrowMove();
 
     // Hide the labels
@@ -93,20 +103,41 @@ function expandHeader() {
   }
 }
 
+/**
+ * Starts icon wiggle
+ *
+ * @param {Element} e - The parent li element of the arrow
+ */
 function makeIconWiggle(e) {
   e.currentTarget.classList.add('wiggle-icon');
 }
 
+/**
+ * Stops icon wiggle
+ *
+ * @param {Element} e - The parent li element of the arrow
+ */
 function stopIconWiggle(e) {
   e.currentTarget.classList.remove('wiggle-icon');
 }
 
+/**
+ * Makes the arrow move for the header expansion button
+ *
+ * @param {Element} e - The parent li element of the arrow
+ */
 function makeArrowMove(e) {
   let headerUl = document.getElementById('header-ul');
   setArrowMove(headerUl, e.currentTarget);
+  setArro
   mouseOverExpandHeaderButton = true;
 }
 
+/**
+ * Updates the direction the arrow should be moving. This is intended
+ * to be used at the completion of expansion or collapsing to ensure
+ * the arrow is moving in the correction direction
+ */
 function updateArrowMove() {
   let headerUl = document.getElementById('header-ul');
   let expandLi = document.getElementById('expand-header').parentElement;
@@ -115,6 +146,12 @@ function updateArrowMove() {
     setArrowMove(headerUl, expandLi);
 }
 
+/**
+ * Starts moving the arrow
+ *
+ * @param {Element} headerUl - The containing ul element
+ * @param {Element} target - The target parent li element of the arrow
+ */
 function setArrowMove(headerUl, target) {
   if (headerUl.classList.contains('expanded')) {
     target.classList.remove('arrow-move-right');
@@ -125,6 +162,11 @@ function setArrowMove(headerUl, target) {
   }
 }
 
+/**
+ * Stops the expand button arrow from moving
+ *
+ * @param {Element} e - the parent li container of the arrow
+ */
 function stopArrowMove(e) {
   e.currentTarget.classList = [];
   mouseOverExpandHeaderButton = false;

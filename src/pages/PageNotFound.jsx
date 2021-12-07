@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * PageNotFound Page
+ *
+ * @return {React.FC} The page not found HTML
+ */
 function PageNotFound() {
   document.title = "Page Not Found";
   return (
