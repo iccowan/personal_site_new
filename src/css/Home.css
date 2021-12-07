@@ -20,7 +20,7 @@
     100% { background-position: top right; }
 }
 
-.home-begin {
+.shimmer {
     font-size: 2em;
     text-align: center;
     font-style: italic;
@@ -39,14 +39,22 @@
     -webkit-animation-name: shimmer;
     -moz-animation-name: shimmer;
     animation-name: shimmer;
-    -webkit-animation-duration: 4s;
-    -moz-animation-duration: 4s;
-    animation-duration: 4s;
+    -webkit-animation-duration: 3s;
+    -moz-animation-duration: 3s;
+    animation-duration: 3s;
     -webkit-animation-iteration-count: infinite;
     -moz-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
     background-repeat: no-repeat;
     background-position: 0 0;
     background-color: #222;
+}
+
+p.small {
+    font-size: 1em;
+}
+
+a {
+    color: inherit;
 }
 

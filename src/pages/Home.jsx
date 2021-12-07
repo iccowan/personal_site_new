@@ -14,50 +14,44 @@ function Home() {
   const fadePage = batch(Sticky(), Fade(), Move(0, 300));
 
   return (
-    <div className="scroll-container" onScroll={scrollSnap} data-testid="page-home">
+    <div className="scroll-container center" data-testid="page-home">
       <ScrollContainer snap="mandatory">
         <ScrollPage page={0}>
           <Animator animation={fadePage}>
-            <div className="center" onScroll={scrollSnap}>
-              <GeneratePageTitle title="Ian Cowan" />
-              <h3 className="home-begin">Scroll to begin...</h3>
-            </div>
+            <GeneratePageTitle title="Ian Cowan" />
+            <p className="shimmer"><i class="fas fa-arrow-down"></i> Scroll to begin...</p>
           </Animator>
         </ScrollPage>
         <ScrollPage page={1}>
-          <div className="center">
-            <Animator animation={fadePage}>
-              <h2>Hello, world!</h2>
-              <p>Yes, I know this is insane lol</p>
-            </Animator>
-          </div>
+          <Animator animation={fadePage}>
+            <h2>Hi, there! <i class="fas fa-glass-cheers"></i></h2>
+            <p>I see you've found this extremely early version of my new website!</p>
+            <p className="shimmer small">Scroll to continue...</p>
+          </Animator>
         </ScrollPage>
         <ScrollPage page={2}>
           <Animator animation={fadePage}>
-            <h2>Hello, world!</h2>
-            <p>Yes, I know this is insane lol</p>
+            <h2>The real version is coming soon...</h2>
+            <p>There's not much to see here, but I promise the real one is not far away!</p>
+            <p className="shimmer small">Scroll to continue...</p>
           </Animator>
         </ScrollPage>
         <ScrollPage page={3}>
           <Animator animation={fadePage}>
-            <h2>This is some cool text! `&gt`:)</h2>
-            <p>Yes, I know this is insane lol</p>
+            <h2>Check back for updates</h2>
+            <p>Check at <a href="https://iancowan.me">https://iancowan.me</a> for the real live version</p>
+            <p className="shimmer small">Scroll to continue...</p>
           </Animator>
         </ScrollPage>
         <ScrollPage page={4}>
           <Animator animation={fadePage}>
-            <h2>This is some cool text!</h2>
-            <p>Yes, I know this is insane lol. This is why I love coding!</p>
+            <h2>Thanks for checking in!</h2>
+            <p>I hope you enjoyed this preview of my new site! I can't wait for you to see the finished product!</p>
           </Animator>
         </ScrollPage>
       </ScrollContainer>
     </div>
   );
-}
-
-function scrollSnap() {
-  let inPagePages = Document.querySelector('div.scroll-container > div > div');
-  console.log(inPagePages);
 }
 
 export default Home;
