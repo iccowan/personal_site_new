@@ -1,15 +1,6 @@
 import React from 'react-dom';
 import './css/App.css';
 import {
-  Animator,
-  ScrollContainer,
-  ScrollPage,
-  batch,
-  Fade,
-  Move,
-  Sticky
-} from 'react-scroll-motion';
-import {
   Routes,
   Route
 } from "react-router-dom";
@@ -36,14 +27,12 @@ function App() {
         <Header />
       </div>
       <div className="body">
-        <ScrollContainer>
-          <Routes>
-            <Route path="/" element={<RenderHome />} />
-            <Route path="/projects" element={<RenderProjects />} />
-            <Route path="/contact" element={<RenderContact />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </ScrollContainer>
+        <Routes>
+          <Route path="/" element={<RenderHome />} />
+          <Route path="/projects" element={<RenderProjects />} />
+          <Route path="/contact" element={<RenderContact />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
       </div>
     </div>
   );

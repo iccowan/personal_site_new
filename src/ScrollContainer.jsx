@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, {useCallback, useEffect, useState, useRef} from "react";
 import { ScrollContainerContext } from "react-scroll-motion";
 import environment from './environment.js';
 
@@ -13,14 +13,15 @@ const ScrollAnimatorContainer = ({ snap = 'none', children, scrollParent = windo
     realPage: 0, // 실수 페이지
     currentPage: 0, // 정수 페이지
     currentProgress: 0, // 현재 페이지 진행률 (%)
+    timer: 0
   });
 
-  const doSnap = snap != 'none';
-  var scrollTimer;
-
+  const doSnap = snap !== 'none';
+  var timer = useRef(null);
+  
   const scrollEvent = useCallback(() => {
-    if (doSnap && scrollTimer)
-      clearTimeout(scrollTimer);
+    if (doSnap && timer.current)
+      clearTimeout(timer.current);
 
     var currentY = scrollParent === window ? window.pageYOffset : (scrollParent).scrollTop;
     var viewportHeight = scrollParent === window? environment.height : (scrollParent).clientHeight;
@@ -42,13 +43,13 @@ const ScrollAnimatorContainer = ({ snap = 'none', children, scrollParent = windo
     });
 
     if (doSnap) {
-      scrollTimer = setTimeout(() => {
+      timer.current = setTimeout(() => {
         currentPage = Math.round(realPage);
         let newCurrentY = currentY;
         if (snap === 'mandatory' || Math.abs(currentPage - realPage) < 0.3)
           newCurrentY = currentPage * viewportHeight;
 
-        if (newCurrentY != currentY)
+        if (newCurrentY !== currentY)
           window.scrollTo({
             top: newCurrentY,
             behavior: 'smooth'
@@ -56,14 +57,14 @@ const ScrollAnimatorContainer = ({ snap = 'none', children, scrollParent = windo
       }, 50);
     }
 
-  }, []);
+  }, [children.length, doSnap, scrollParent, snap]);
 
   useEffect(() => {
     scrollEvent();
     scrollParent.addEventListener("scroll", scrollEvent);
     scrollParent.addEventListener("resize", scrollEvent);
     return () => scrollParent.removeEventListener("scroll", scrollEvent);
-  }, []);
+  }, [scrollEvent, scrollParent]);
 
   return (
     <div style={{ margin: 0, padding: 0, userSelect: "none" }}>
