@@ -83,7 +83,7 @@ function setTitle(page) {
 export function GeneratePageTitle(params) {
   return (
     <div data-testid="page-title">
-      <h1 class="page-title">{params.title}</h1>
+      <h1 className="page-title">{params.title}</h1>
     </div>
   );
 }
