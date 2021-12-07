@@ -86,11 +86,17 @@ nav li a.active, nav li a:hover {
 
 @keyframes wiggle {
     0% { transform: rotate(-10deg); }
-    50% { transform: rotate(10deg); }
-    100% { transform: rotate(-10deg); }
+    12.5% { transform: rotate(10deg); }
+    25% { transform: rotate(-5deg); }
+    37.5% { transform: rotate(5deg); }
+    50% {transform: rotate(-2.5deg); }
+    62.5% { transform: rotate(2.5deg); }
+    75% { transform: rotate(-1.25deg); }
+    87.5% { transform: rotate(1.25deg); }
+    100% {transform: rotate(0); }
 }
 li.wiggle-icon i {
-    animation: wiggle .2s infinite;
+    animation: wiggle 0.75s;
 }
 
 @keyframes move-right {
@@ -104,7 +110,8 @@ li.wiggle-icon i {
     }
 }
 li.arrow-move-right i {
-    animation: move-right 1s infinite;
+    opacity: 0;
+    animation: move-right 1s;
 }
 
 @keyframes move-left {
@@ -118,6 +125,7 @@ li.arrow-move-right i {
     }
 }
 li.arrow-move-left i {
-    animation: move-left 1s infinite;
+    opacity: 0;
+    animation: move-left 1s;
 }
 
