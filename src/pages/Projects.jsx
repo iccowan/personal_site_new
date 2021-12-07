@@ -1,4 +1,5 @@
 import React from 'react';
+import {GeneratePageTitle} from '../App';
 
 /**
  * Projects Page
@@ -8,7 +9,7 @@ import React from 'react';
 function Projects() {
   return (
     <div data-testid="page-projects">
-      <h1>Projects</h1>
+      <GeneratePageTitle title="Projects" />
     </div>
   );
 }

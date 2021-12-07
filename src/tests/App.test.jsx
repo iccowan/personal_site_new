@@ -1,11 +1,8 @@
 import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom';
-import {MemoryRouter} from 'react-router-dom';
+import {MemoryRouter, Redirect} from 'react-router-dom';
 
 import App from '../App';
-import Home from '../pages/Home';
-import Projects from '../pages/Projects';
-import Contact from '../pages/Contact';
 
 test('home page renders by default', () => {
   render(
@@ -57,3 +54,22 @@ test('page not found page renders at any non-existent url', () => {
   expect(screen.getByTestId('page-not-found')).toBeInTheDocument();
 });
 
+test('all pages have exactly one title', () => {
+  const pages = [
+    '/',
+    '/projects',
+    '/contact',
+    '/a-route-that-doesnt-exist'
+  ];
+
+  for (let page of pages) {
+    document.body.innerHTML = "";
+    render(
+      <MemoryRouter initialEntries={[page]}>
+        <App />
+      </MemoryRouter>
+    );
+
+    expect(screen.getByTestId('page-title')).toBeInTheDocument();
+  }
+});

@@ -1,4 +1,5 @@
 import React from 'react';
+import {GeneratePageTitle} from '../App';
 
 /**
  * Contact Page
@@ -8,7 +9,7 @@ import React from 'react';
 function Contact() {
   return (
     <div data-testid="page-contact">
-      <h1>Contact</h1>
+      <GeneratePageTitle title="Contact" />
     </div>
   );
 }

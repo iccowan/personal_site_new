@@ -65,6 +65,20 @@ function setTitle(page) {
 }
 
 /**
+ * Generate the title for a page
+ *
+ * @param {Object} params - The params: {title: The page title}
+ */
+export function GeneratePageTitle(params) {
+  return (
+    <div data-testid="page-title">
+      <h1>{params.title}</h1>
+      <hr />
+    </div>
+  );
+}
+
+/**
  * Renders the home page
  *
  * @return {React.FC} = The home HTML
