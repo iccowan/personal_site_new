@@ -1,12 +1,12 @@
-name: build, test, and deploy
+name: ci-cd
 on: push
+env:
+    NODE_VERSION: '16.13.1'
 
 jobs:
     build:
         name: build
         runs-on: ubuntu-latest
-        env:
-            NODE_VERSION: 14.18.0
 
         steps:
         - name: checkout repository
@@ -20,14 +20,17 @@ jobs:
                   node_modules
                   .pnp
                   .pnp.js
-              key: ${{ runner.os }}-package-lock-${{ hashFiles('**/package-lock.json') }}-v1
+              key: ${{ runner.os }}-package-lock-v1-${{ hashFiles('**/package-lock.json') }}
               restore-keys: |
-                  ${{ runner.os }}-package-lock-
+                  ${{ runner.os }}-package-lock-v1-
 
         - name: setup node.js
           uses: actions/setup-node@v1
           with:
               node-version: ${{ env.NODE_VERSION }}
+
+        - name: update npm
+          run: npm install -g npm@latest
 
         - name: install dependencies
           run: npm install
@@ -51,14 +54,17 @@ jobs:
                   node_modules
                   .pnp
                   .pnp.js
-              key: ${{ runner.os }}-package-lock-${{ hashFiles('**/package-lock.json') }}-v1
+              key: ${{ runner.os }}-package-lock-v1-${{ hashFiles('**/package-lock.json') }}
               restore-keys: |
-                  ${{ runner.os }}-package-lock-
+                  ${{ runner.os }}-package-lock-v1-
 
         - name: setup node.js
           uses: actions/setup-node@v1
           with:
-              node-version: ${{ needs.jobs.build.env.NODE_VERSION }}
+              node-version: ${{ env.NODE_VERSION }}
+
+        - name: update npm
+          run: npm install -g npm@latest
 
         - name: install dependencies
           run: npm install
@@ -83,14 +89,17 @@ jobs:
                   node_modules
                   .pnp
                   .pnp.js
-              key: ${{ runner.os }}-package-lock-${{ hashFiles('**/package-lock.json') }}-v1
+              key: ${{ runner.os }}-package-lock-v1-${{ hashFiles('**/package-lock.json') }}
               restore-keys: |
-                  ${{ runner.os }}-package-lock-
+                  ${{ runner.os }}-package-lock-v1-
 
         - name: setup node.js
           uses: actions/setup-node@v1
           with:
-              node-version: ${{ needs.jobs.build.env.NODE_VERSION }}
+              node-version: ${{ env.NODE_VERSION }}
+
+        - name: update npm
+          run: npm install -g npm@latest
 
         - name: install dependencies
           run: npm install
@@ -125,14 +134,17 @@ jobs:
                   node_modules
                   .pnp
                   .pnp.js
-              key: ${{ runner.os }}-package-lock-${{ hashFiles('**/package-lock.json') }}-v1
+              key: ${{ runner.os }}-package-lock-v1-${{ hashFiles('**/package-lock.json') }}
               restore-keys: |
-                  ${{ runner.os }}-package-lock-
+                  ${{ runner.os }}-package-lock-v1-
 
         - name: setup node.js
           uses: actions/setup-node@v1
           with:
-              node-version: ${{ needs.jobs.build.env.NODE_VERSION }}
+              node-version: ${{ env.NODE_VERSION }}
+
+        - name: update npm
+          run: npm install -g npm@latest
 
         - name: install dependencies
           run: npm install
