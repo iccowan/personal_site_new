@@ -46,8 +46,6 @@ nav ul.expanded li a {
 button#expand-header {
     width: 60px;
     text-align: center;
-    font-family: 'Ubuntu', sans-serif;
-
     transition: width 0.25s linear;
 }
 
