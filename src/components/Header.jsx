@@ -129,7 +129,6 @@ function stopIconWiggle(e) {
 function makeArrowMove(e) {
   let headerUl = document.getElementById('header-ul');
   setArrowMove(headerUl, e.currentTarget);
-  setArro
   mouseOverExpandHeaderButton = true;
 }
 
