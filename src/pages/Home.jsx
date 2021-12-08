@@ -1,6 +1,7 @@
 import React from 'react';
-import {GeneratePageTitle} from '../App';
+import {Link} from 'react-router-dom';
 import {Animator, ScrollPage, Move, Fade, Sticky, batch} from 'react-scroll-motion';
+import {GeneratePageTitle} from '../App';
 import ScrollContainer from '../ScrollContainer';
 
 import '../css/Home.css';
@@ -19,12 +20,12 @@ function Home() {
         <ScrollPage page={0}>
           <Animator animation={fadePage}>
             <GeneratePageTitle title="Ian Cowan" />
-            <p className="shimmer"><i class="fas fa-arrow-down"></i> Scroll to begin...</p>
+            <p className="shimmer"><i className="fas fa-arrow-down"></i> Scroll to begin...</p>
           </Animator>
         </ScrollPage>
         <ScrollPage page={1}>
           <Animator animation={fadePage}>
-            <h2>Hi, there! <i class="fas fa-glass-cheers"></i></h2>
+            <h2>Hi, there! <i className="fas fa-glass-cheers"></i></h2>
             <p>I see you've found this extremely early version of my new website!</p>
             <p className="shimmer small">Scroll to continue...</p>
           </Animator>
@@ -39,7 +40,7 @@ function Home() {
         <ScrollPage page={3}>
           <Animator animation={fadePage}>
             <h2>Check back for updates</h2>
-            <p>Check at <a href="https://iancowan.me">https://iancowan.me</a> for the real live version</p>
+            <p>As the site progresses, the updates (working or not) will be deployed here.</p>
             <p className="shimmer small">Scroll to continue...</p>
           </Animator>
         </ScrollPage>
@@ -47,6 +48,7 @@ function Home() {
           <Animator animation={fadePage}>
             <h2>Thanks for checking in!</h2>
             <p>I hope you enjoyed this preview of my new site! I can't wait for you to see the finished product!</p>
+            <p>Check at <Link to="/external/https/iancowan.me">https://iancowan.me</Link> for the live version when it becomes available</p>
           </Animator>
         </ScrollPage>
       </ScrollContainer>
