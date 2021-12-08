@@ -2,7 +2,7 @@ nav li a.active, nav li a:hover {
     background-color: #044343;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) {
     nav ul {
         box-shadow: 5px 10px 20px 5px #044343;
         position: fixed;
@@ -133,13 +133,12 @@ nav li a.active, nav li a:hover {
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     button#expand-header {
         display: none;
     }
 
     nav ul {
-        position: fixed;
         box-shadow: 0 10px 20px 5px #044343;
         display: block;
         height: 60px;

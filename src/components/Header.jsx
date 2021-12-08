@@ -26,7 +26,7 @@ function Header() {
       <ul id="header-ul" data-testid="header-nav-ul">
         <button id="expand-ham" onClick={expandHamburger} data-testid="header-nav-expandHamburger"><i className="fas fa-bars"></i></button>
         <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle} data-testid="header-nav-li-ian-cowan">
-          <Link to="/" className={activePage.home}><i className="fas fa-home"></i><span className="hidden header-label" data-testid="header-nav-span-ian-cowan">&nbsp;&nbsp;&nbsp;Ian Cowan</span></Link>
+          <Link to="/" className={activePage.home}><i className="fas fa-user"></i><span className="hidden header-label" data-testid="header-nav-span-ian-cowan">&nbsp;&nbsp;&nbsp;Ian Cowan</span></Link>
         </li>
         <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle} data-testid="header-nav-li-projects">
           <Link to="/projects" className={activePage.projects}><i className="fas fa-file-code"></i><span className="hidden header-label" data-testid="header-nav-span-projects">&nbsp;&nbsp;&nbsp;Projects</span></Link>

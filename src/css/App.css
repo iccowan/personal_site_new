@@ -22,6 +22,12 @@ div.body.header-open {
     transition: margin-left 0.25s ease-in;
 }
 
+@media only screen and (max-width: 600px) {
+    div.body {
+        margin-left: 40px;
+    }
+}
+
 h1 {
     font-size: 6em;
 }
