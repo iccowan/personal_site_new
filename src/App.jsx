@@ -62,7 +62,10 @@ function includeScripts() {
  * @param {string} page - The name of the current page
  */
 function setTitle(page) {
-  document.title = page + ' | Ian Cowan';
+  if (page === '')
+    document.title = 'Ian Cowan';
+  else
+    document.title = page + ' | Ian Cowan';
 }
 
 /**
@@ -84,7 +87,7 @@ export function GeneratePageTitle(params) {
  * @return {React.FC} = The home HTML
  */
 function RenderHome() {
-  setTitle("Home");
+  setTitle("");
   return Home();
 }
 
