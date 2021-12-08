@@ -1,8 +1,8 @@
-import React from 'react-dom';
-import './css/App.css';
+import React from 'react-dom'; import './css/App.css';
 import {
   Routes,
-  Route
+  Route,
+  useParams
 } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -31,6 +31,7 @@ function App() {
           <Route path="/" element={<RenderHome />} />
           <Route path="/projects" element={<RenderProjects />} />
           <Route path="/contact" element={<RenderContact />} />
+          <Route path="/external/:proto/:path" element={<RedirectToExternal />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
@@ -105,6 +106,13 @@ function RenderProjects() {
 function RenderContact() {
   setTitle("Contact");
   return Contact();
+}
+
+function RedirectToExternal(props) {
+  const {proto, path} = useParams();
+  const href = proto + '://' + path;
+  window.location.href = href;
+  return null;
 }
 
 export default App;

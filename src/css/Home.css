@@ -55,6 +55,7 @@ p.small {
 }
 
 a {
+    z-index: 100;
     color: inherit;
 }
 
