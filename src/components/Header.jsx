@@ -24,6 +24,7 @@ function Header() {
   return (
     <nav>
       <ul id="header-ul" data-testid="header-nav-ul">
+        <button id="expand-ham" onClick={expandHamburger} data-testid="header-nav-expandHamburger"><i className="fas fa-bars"></i></button>
         <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle} data-testid="header-nav-li-ian-cowan">
           <Link to="/" className={activePage.home}><i className="fas fa-home"></i><span className="hidden header-label" data-testid="header-nav-span-ian-cowan">&nbsp;&nbsp;&nbsp;Ian Cowan</span></Link>
         </li>
@@ -33,7 +34,7 @@ function Header() {
         <li onMouseEnter={makeIconWiggle} onMouseLeave={stopIconWiggle} data-testid="header-nav-li-contact">
           <Link to="/contact" className={activePage.contact}><i className="fas fa-file-signature"></i><span className="hidden header-label" data-testid="header-nav-span-contact">&nbsp;&nbsp;&nbsp;Contact</span></Link>
         </li>
-        <li onMouseEnter={makeArrowMove} onMouseLeave={stopArrowMove} data-testid="header-nav-li-collapseButton">
+        <li id="expand-header-container" onMouseEnter={makeArrowMove} onMouseLeave={stopArrowMove} data-testid="header-nav-li-collapseButton">
           <button id="expand-header" onClick={expandHeader} data-testid="header-nav-collapseButton"><i id="collapseIcon" className="fas fa-arrow-right"></i><span className="hidden header-label" data-testid="header-nav-span-collapse-button">&nbsp;&nbsp;&nbsp;Collapse</span></button>
         </li>
       </ul>
@@ -101,6 +102,23 @@ function expandHeader() {
     collapseIcon.classList.remove('fa-arrow-left');
     collapseIcon.classList.add('fa-arrow-right');
   }
+}
+
+function expandHamburger() {
+  // Display the labels
+  let labels = document.getElementsByClassName('header-label');
+  if (labels[0].classList.contains('hidden')) {
+    for (let label of labels) {
+      label.classList.remove('hidden');
+    };
+  }
+
+  let header = document.getElementById('header-ul');
+  if (! header.classList.contains('expanded')) {
+    header.classList.add('expanded');
+  } else 
+    header.classList.remove('expanded');
+
 }
 
 /**

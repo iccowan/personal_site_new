@@ -1,129 +1,190 @@
-nav ul {
-    box-shadow: 5px 10px 20px 5px #044343;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 60px;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-
-    transition: width 0.25s ease-in;
-}
-
-nav ul.expanded {
-    width: 200px;
-    text-align: right;
-    transition: width 0.25s ease-in;
-}
-
-nav li {
-    height: 60px;
-    display: inline;
-    margin: 0;
-    padding: 0;
-}
-
-nav li a, button#expand-header {
-    display: block;
-    border: none;
-    color: inherit;
-    margin: 0;
-    text-decoration: none;
-    background-color: inherit;
-    overflow: hidden;
-    padding-top: 21px;
-    padding-bottom: 21px;
-
-    font-size: 18px;
-}
-
-nav ul.expanded li a {
-    padding-right: 10px;
-}
-
-button#expand-header {
-    width: 60px;
-    text-align: center;
-    transition: width 0.25s linear;
-}
-
-nav ul.expanded button#expand-header {
-    float: right;
-    width: 200px;
-    text-align: right;
-    padding-right: 10px;
-}
-
-button#expand-header:hover {
-    cursor: pointer;
-}
-
 nav li a.active, nav li a:hover {
     background-color: #044343;
 }
 
-@keyframes shake {
-    10%, 90% {
-        transform: translate3d(-1px, 0, 0);
-    }
-                
-    20%, 80% {
-        transform: translate3d(2px, 0, 0);
+@media only screen and (min-width: 600px) {
+    nav ul {
+        box-shadow: 5px 10px 20px 5px #044343;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 60px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+
+        transition: width 0.25s ease-in-out;
     }
 
-    30%, 50%, 70% {
-        transford: translate3d(-4px, 0, 0);
+    nav ul.expanded {
+        width: 200px;
+        text-align: right;
+        transition: width 0.25s ease-in-out;
     }
 
-    40%, 60% {
-        transfordm: translate3d(4px, 0, 0);
+    nav li {
+        height: 60px;
+        display: inline;
+        margin: 0;
+        padding: 0;
     }
-}
 
-@keyframes wiggle {
-    0% { transform: rotate(-10deg); }
-    12.5% { transform: rotate(10deg); }
-    25% { transform: rotate(-5deg); }
-    37.5% { transform: rotate(5deg); }
-    50% {transform: rotate(-2.5deg); }
-    62.5% { transform: rotate(2.5deg); }
-    75% { transform: rotate(-1.25deg); }
-    87.5% { transform: rotate(1.25deg); }
-    100% {transform: rotate(0); }
-}
-li.wiggle-icon i {
-    animation: wiggle 0.75s;
-}
+    nav li a, button#expand-header {
+        display: block;
+        border: none;
+        color: inherit;
+        margin: 0;
+        text-decoration: none;
+        background-color: inherit;
+        overflow: hidden;
+        padding-top: 21px;
+        padding-bottom: 21px;
 
-@keyframes move-right {
-    0% {
-        transform: translate(0, 0);
-        opacity: 1;
+        font-size: 18px;
     }
-    100% {
-        transform: translate(30px, 0);
+
+    nav ul.expanded li a {
+        padding-right: 10px;
+    }
+
+    button#expand-header {
+        width: 60px;
+        text-align: center;
+        transition: width 0.25s linear;
+    }
+
+    nav ul.expanded button#expand-header {
+        float: right;
+        width: 200px;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    button#expand-header:hover {
+        cursor: pointer;
+    }
+
+    @keyframes shake {
+        10%, 90% {
+            transform: translate3d(-1px, 0, 0);
+        }
+                    
+        20%, 80% {
+            transform: translate3d(2px, 0, 0);
+        }
+
+        30%, 50%, 70% {
+            transford: translate3d(-4px, 0, 0);
+        }
+
+        40%, 60% {
+            transfordm: translate3d(4px, 0, 0);
+        }
+    }
+
+    @keyframes wiggle {
+        0% { transform: rotate(-10deg); }
+        12.5% { transform: rotate(10deg); }
+        25% { transform: rotate(-5deg); }
+        37.5% { transform: rotate(5deg); }
+        50% {transform: rotate(-2.5deg); }
+        62.5% { transform: rotate(2.5deg); }
+        75% { transform: rotate(-1.25deg); }
+        87.5% { transform: rotate(1.25deg); }
+        100% {transform: rotate(0); }
+    }
+    li.wiggle-icon i {
+        animation: wiggle 0.75s;
+    }
+
+    @keyframes move-right {
+        0% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(30px, 0);
+            opacity: 0;
+        }
+    }
+    li.arrow-move-right i {
         opacity: 0;
+        animation: move-right 1s;
     }
-}
-li.arrow-move-right i {
-    opacity: 0;
-    animation: move-right 1s;
+
+    @keyframes move-left {
+        0% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-30px, 0);
+            opacity: 0;
+        }
+    }
+    li.arrow-move-left i {
+        opacity: 0;
+        animation: move-left 1s;
+    }
+
+    button#expand-ham {
+        display: none;
+    }
 }
 
-@keyframes move-left {
-    0% {
-        transform: translate(0, 0);
-        opacity: 1;
+@media only screen and (max-width: 600px) {
+    button#expand-header {
+        display: none;
     }
-    100% {
-        transform: translate(-30px, 0);
-        opacity: 0;
+
+    nav ul {
+        position: fixed;
+        box-shadow: 0 10px 20px 5px #044343;
+        display: block;
+        height: 60px;
+        width: 100vw;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+
+        transition: height 0.25s ease-in-out;
     }
-}
-li.arrow-move-left i {
-    opacity: 0;
-    animation: move-left 1s;
+
+    nav ul.expanded {
+        height: calc(60px * 4);
+        max-height: auto;
+        transition: height 0.25s ease-in-out;
+    }
+
+    nav li {
+        height: 60px;
+        width: 100%;
+        display: block;
+        margin: 0;
+    }
+
+    nav li a, button#expand-ham {
+        display: block;
+        border: none;
+        color: inherit;
+        margin: 0;
+        text-decoration: none;
+        background-color: inherit;
+        padding: 21px;
+        text-align: right;
+        cursor: pointer;
+
+        font-size: 18px;
+    }
+
+    button#expand-ham {
+        width: 100%;
+    }
+
+    #expand-header-container {
+        display: none;
+    }
 }
 
