@@ -23,7 +23,7 @@ test('clicking the expand header button expands the header', () => {
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
 
   expect(screen.getByTestId('header-nav-ul').classList).toContain('expanded');
@@ -36,7 +36,7 @@ test('Ian Cowan label appears after 250ms when expanding the header', async () =
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
 
   expect(screen.getByTestId('header-nav-span-ian-cowan').classList.contains('hidden')).toBeTruthy();
@@ -52,7 +52,7 @@ test('Projects label appears after 250ms when expanding the header', async () =>
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
 
   expect(screen.getByTestId('header-nav-span-projects').classList.contains('hidden')).toBeTruthy();
@@ -68,7 +68,7 @@ test('Contact label appears after 250ms when expanding the header', async () => 
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
 
   expect(screen.getByTestId('header-nav-span-contact').classList.contains('hidden')).toBeTruthy();
@@ -84,7 +84,7 @@ test('Collapse label appears after 250ms when expanding the header', async () =>
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
 
   expect(screen.getByTestId('header-nav-span-collapse-button').classList.contains('hidden')).toBeTruthy();
@@ -100,7 +100,7 @@ test('Ian Cowan label disappears immediately when closing the header', () => {
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
   fireEvent.click(expandButton);
 
@@ -114,7 +114,7 @@ test('Projects label disappears immediately when closing the header', () => {
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
   fireEvent.click(expandButton);
 
@@ -128,7 +128,7 @@ test('Contact label disappears immediately when closing the header', () => {
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
   fireEvent.click(expandButton);
 
@@ -142,7 +142,7 @@ test('Collapse label disappears immediately when closing the header', () => {
     </MemoryRouter>
   );
 
-  let expandButton = screen.getByRole('button');
+  let expandButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(expandButton);
   fireEvent.click(expandButton);
 
@@ -201,7 +201,7 @@ test('Expand button icon moves in the proper direction on hover', () => {
   expect(screen.getByTestId('header-nav-li-collapseButton').classList.contains('arrow-move-right')).toBeTruthy();
   expect(screen.getByTestId('header-nav-li-collapseButton').classList.contains('arrow-move-left')).toBeFalsy();
 
-  let collapseButton = screen.getByRole('button');
+  let collapseButton = screen.getByTestId('header-nav-collapseButton');
   fireEvent.click(collapseButton);
 
   fireEvent.mouseOver(listItem);
