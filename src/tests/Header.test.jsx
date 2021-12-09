@@ -247,3 +247,36 @@ test('Contact link directs to correct page', () => {
   expect(screen.getByTestId('page-projects')).toBeInTheDocument();
 });
 
+test('Clicking the expand header hamburger drops down the nav', () => {
+  // No need to set a particular width. We can still click on this hidden
+  // item and make sure the logic is running correctly. We will test visuals
+  // manually
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+
+  let expandButton = screen.getByTestId('header-nav-expandHamburger');
+  fireEvent.click(expandButton);
+
+  expect(screen.getByTestId('header-nav-ul').classList).toContain('expanded');
+});
+
+test('Clicking on the expand header hamburger raises the droped down nav', () => {
+  // No need to set a particular width. We can still click on this hidden
+  // item and make sure the logic is running correctly. We will test visuals
+  // manually
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+
+  let expandButton = screen.getByTestId('header-nav-expandHamburger');
+  fireEvent.click(expandButton);
+  fireEvent.click(expandButton);
+
+  expect(screen.getByTestId('header-nav-ul').classList.contains('expanded')).toBeFalsy();
+});
+
