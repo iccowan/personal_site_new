@@ -167,13 +167,15 @@ nav li a.active, nav li a:hover {
     nav li a, button#expand-ham {
         display: block;
         border: none;
+        cursor: pointer;
+        position: relative;
         color: inherit;
         margin: 0;
         text-decoration: none;
         background-color: inherit;
         padding: 21px;
         text-align: right;
-        cursor: pointer;
+        z-index: 99;
 
         font-size: 18px;
     }
