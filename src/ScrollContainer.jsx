@@ -1,9 +1,12 @@
-import React, {useCallback, useEffect, useState, useRef} from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import { ScrollContainerContext } from "react-scroll-motion";
-import environment from './environment.js';
+import environment from "./environment.js";
 
-const ScrollAnimatorContainer = ({ snap = 'none', children, scrollParent = window }) => {
-
+const ScrollAnimatorContainer = ({
+  snap = "none",
+  children,
+  scrollParent = window,
+}) => {
   const [scrollData, setScrollData] = useState({
     currentY: 0, // 현재 스크롤 위치(px)
     viewportHeight: 0, // 화면 높이(px)
@@ -13,18 +16,19 @@ const ScrollAnimatorContainer = ({ snap = 'none', children, scrollParent = windo
     realPage: 0, // 실수 페이지
     currentPage: 0, // 정수 페이지
     currentProgress: 0, // 현재 페이지 진행률 (%)
-    timer: 0
+    timer: 0,
   });
 
-  const doSnap = snap !== 'none';
+  const doSnap = snap !== "none";
   var timer = useRef(null);
-  
-  const scrollEvent = useCallback(() => {
-    if (doSnap && timer.current)
-      clearTimeout(timer.current);
 
-    var currentY = scrollParent === window ? window.pageYOffset : (scrollParent).scrollTop;
-    var viewportHeight = scrollParent === window? environment.height : (scrollParent).clientHeight;
+  const scrollEvent = useCallback(() => {
+    if (doSnap && timer.current) clearTimeout(timer.current);
+
+    var currentY =
+      scrollParent === window ? window.pageYOffset : scrollParent.scrollTop;
+    var viewportHeight =
+      scrollParent === window ? environment.height : scrollParent.clientHeight;
     var totalPage = children.length || 0;
     var totalHeight = totalPage * (viewportHeight - 1);
     var totalProgress = currentY / totalHeight; // 전체 페이지 진행률 0 ~ 1
@@ -46,17 +50,16 @@ const ScrollAnimatorContainer = ({ snap = 'none', children, scrollParent = windo
       timer.current = setTimeout(() => {
         currentPage = Math.round(realPage);
         let newCurrentY = currentY;
-        if (snap === 'mandatory' || Math.abs(currentPage - realPage) < 0.3)
+        if (snap === "mandatory" || Math.abs(currentPage - realPage) < 0.3)
           newCurrentY = currentPage * viewportHeight;
 
         if (newCurrentY !== currentY)
           window.scrollTo({
             top: newCurrentY,
-            behavior: 'smooth'
+            behavior: "smooth",
           });
       }, 50);
     }
-
   }, [children.length, doSnap, scrollParent, snap]);
 
   useEffect(() => {

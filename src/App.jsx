@@ -1,9 +1,6 @@
-import React from 'react-dom'; import './css/App.css';
-import {
-  Routes,
-  Route,
-  useParams
-} from "react-router-dom";
+import React from "react-dom";
+import "./css/App.css";
+import { Routes, Route, useParams } from "react-router-dom";
 
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -13,10 +10,10 @@ import Contact from "./pages/Contact";
 import PageNotFound from "./pages/PageNotFound";
 
 /**
-  * Main App
-  *
-  * @return {React.FC} The main app HTML
-  */
+ * Main App
+ *
+ * @return {React.FC} The main app HTML
+ */
 function App() {
   // Include all of the external scripts
   includeScripts();
@@ -31,7 +28,10 @@ function App() {
           <Route path="/" element={<RenderHome />} />
           <Route path="/projects" element={<RenderProjects />} />
           <Route path="/contact" element={<RenderContact />} />
-          <Route path="/external/:proto/:path" element={<RedirectToExternal />} />
+          <Route
+            path="/external/:proto/:path"
+            element={<RedirectToExternal />}
+          />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
@@ -42,12 +42,10 @@ function App() {
 /** Includes the listed external scripts in the view */
 function includeScripts() {
   // Add new scripts here
-  const scripts = [
-    'https://kit.fontawesome.com/d556180f35.js'
-  ];
+  const scripts = ["https://kit.fontawesome.com/d556180f35.js"];
 
   // Loop through each script and add them as a script element
-  scripts.forEach(script => {
+  scripts.forEach((script) => {
     const scriptElem = document.createElement("script");
     scriptElem.src = script;
     scriptElem.async = true;
@@ -62,10 +60,8 @@ function includeScripts() {
  * @param {string} page - The name of the current page
  */
 function setTitle(page) {
-  if (page === '')
-    document.title = 'Ian Cowan';
-  else
-    document.title = page + ' | Ian Cowan';
+  if (page === "") document.title = "Ian Cowan";
+  else document.title = page + " | Ian Cowan";
 }
 
 /**
@@ -112,11 +108,10 @@ function RenderContact() {
 }
 
 function RedirectToExternal(props) {
-  const {proto, path} = useParams();
-  const href = proto + '://' + path;
+  const { proto, path } = useParams();
+  const href = proto + "://" + path;
   window.location.href = href;
   return null;
 }
 
 export default App;
-
