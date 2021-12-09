@@ -1,5 +1,5 @@
-import React from 'react';
-import {GeneratePageTitle} from '../App';
+import React from "react";
+import { GeneratePageTitle } from "../App";
 
 /**
  * Projects Page
@@ -15,4 +15,3 @@ function Projects() {
 }
 
 export default Projects;
-

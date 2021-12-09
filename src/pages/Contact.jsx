@@ -1,5 +1,5 @@
-import React from 'react';
-import {GeneratePageTitle} from '../App';
+import React from "react";
+import { GeneratePageTitle } from "../App";
 
 /**
  * Contact Page
@@ -15,4 +15,3 @@ function Contact() {
 }
 
 export default Contact;
-
