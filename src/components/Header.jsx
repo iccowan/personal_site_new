@@ -23,7 +23,7 @@ function Header() {
 
   return (
     <nav>
-      <ul id="header-ul" class="first-load" data-testid="header-nav-ul">
+      <ul id="header-ul" className="first-load" data-testid="header-nav-ul">
         <button
           id="expand-ham"
           onClick={expandHamburger}
