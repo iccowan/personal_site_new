@@ -82,7 +82,8 @@ function Header() {
           onMouseLeave={stopArrowMove}
           data-testid="header-nav-li-collapseButton"
         >
-          <a href="#"
+          <a
+            href="#/"
             id="expand-header"
             onClick={expandHeader}
             data-testid="header-nav-collapseButton"
@@ -109,8 +110,8 @@ function expandHeader() {
     let nav = document.getElementById("header-ul");
     nav.classList.add("expanded");
 
-    if (nav.classList.contains('first-load'))
-      nav.classList.remove('first-load');
+    if (nav.classList.contains("first-load"))
+      nav.classList.remove("first-load");
 
     // Shrink the body
     let body = document.getElementsByClassName("body");
@@ -153,7 +154,7 @@ function expandHeader() {
     // Update the direction the arrow should be moving
     updateArrowMove();
 
-    setTimeout(function() {
+    setTimeout(function () {
       // Hide the labels
       for (var label of labels) {
         label.classList.remove("not-hidden-fade");

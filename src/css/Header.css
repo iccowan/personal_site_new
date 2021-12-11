@@ -24,47 +24,47 @@ nav li a:hover {
 
   @keyframes slide-out-slide-down {
     0% {
-        width: 60px;
-        text-align: center;
+      width: 60px;
+      text-align: center;
     }
     49% {
-        opacity: 0;
-        width: 60px;
-        transform: translate(-60px, 0);
+      opacity: 0;
+      width: 60px;
+      transform: translate(-60px, 0);
     }
     50% {
-        width: 200px;
-        text-align: right;
+      width: 200px;
+      text-align: right;
     }
     51% {
-        transform: translate(0, -100%);
+      transform: translate(0, -100%);
     }
     100% {
-        opacity: 1;
-        transform: translate(0);
+      opacity: 1;
+      transform: translate(0);
     }
   }
 
   @keyframes slide-up-slide-in {
     0% {
-        width: 200px;
-        text-align: right;
+      width: 200px;
+      text-align: right;
     }
     49% {
-        width: 200px;
-        opacity: 0;
-        transform: translate(0, -100%);
+      width: 200px;
+      opacity: 0;
+      transform: translate(0, -100%);
     }
     50% {
-        width: 60px;
-        text-align: center;
+      width: 60px;
+      text-align: center;
     }
     51% {
-        transform: translate(-60px, 0);
+      transform: translate(-60px, 0);
     }
     100% {
-        opacity: 1;
-        transform: translate(0);
+      opacity: 1;
+      transform: translate(0);
     }
   }
 
