@@ -23,7 +23,7 @@ function Header() {
 
   return (
     <nav>
-      <ul id="header-ul" data-testid="header-nav-ul">
+      <ul id="header-ul" class="first-load" data-testid="header-nav-ul">
         <button
           id="expand-ham"
           onClick={expandHamburger}
@@ -82,7 +82,7 @@ function Header() {
           onMouseLeave={stopArrowMove}
           data-testid="header-nav-li-collapseButton"
         >
-          <button
+          <a href="#"
             id="expand-header"
             onClick={expandHeader}
             data-testid="header-nav-collapseButton"
@@ -94,7 +94,7 @@ function Header() {
             >
               &nbsp;&nbsp;&nbsp;Collapse
             </span>
-          </button>
+          </a>
         </li>
       </ul>
     </nav>
@@ -108,6 +108,9 @@ function expandHeader() {
     // Expand the navbar
     let nav = document.getElementById("header-ul");
     nav.classList.add("expanded");
+
+    if (nav.classList.contains('first-load'))
+      nav.classList.remove('first-load');
 
     // Shrink the body
     let body = document.getElementsByClassName("body");
@@ -129,7 +132,7 @@ function expandHeader() {
       let collapseIcon = document.getElementById("collapseIcon");
       collapseIcon.classList.remove("fa-arrow-right");
       collapseIcon.classList.add("fa-arrow-left");
-    }, 250);
+    }, 1000);
   } else {
     // Expand the navbar
     let nav = document.getElementById("header-ul");
@@ -150,16 +153,18 @@ function expandHeader() {
     // Update the direction the arrow should be moving
     updateArrowMove();
 
-    // Hide the labels
-    for (var label of labels) {
-      label.classList.remove("not-hidden-fade");
-      label.classList.add("hidden");
-    }
+    setTimeout(function() {
+      // Hide the labels
+      for (var label of labels) {
+        label.classList.remove("not-hidden-fade");
+        label.classList.add("hidden");
+      }
 
-    // Change the collapse icon
-    let collapseIcon = document.getElementById("collapseIcon");
-    collapseIcon.classList.remove("fa-arrow-left");
-    collapseIcon.classList.add("fa-arrow-right");
+      // Change the collapse icon
+      let collapseIcon = document.getElementById("collapseIcon");
+      collapseIcon.classList.remove("fa-arrow-left");
+      collapseIcon.classList.add("fa-arrow-right");
+    }, 1000);
   }
 }
 
