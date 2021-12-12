@@ -24,16 +24,22 @@ function Header() {
   return (
     <nav>
       <ul id="header-ul" className="first-load" data-testid="header-nav-ul">
-        <button
-          id="expand-ham"
-          onClick={expandHamburger}
-          data-testid="header-nav-expandHamburger"
+        <li
+          id="expand-ham-container"
         >
-          <i className="fas fa-bars"></i>
-        </button>
+          <a
+            href="#/"
+            id="expand-ham"
+            onClick={expandHamburger}
+            data-testid="header-nav-expandHamburger"
+          >
+            <i className="fas fa-bars"></i>
+          </a>
+        </li>
         <li
           onMouseEnter={makeIconWiggle}
           onMouseLeave={stopIconWiggle}
+          onClick={closeHeader}
           data-testid="header-nav-li-ian-cowan"
         >
           <Link to="/" className={activePage.home}>
@@ -49,6 +55,7 @@ function Header() {
         <li
           onMouseEnter={makeIconWiggle}
           onMouseLeave={stopIconWiggle}
+          onClick={closeHeader}
           data-testid="header-nav-li-projects"
         >
           <Link to="/projects" className={activePage.projects}>
@@ -64,6 +71,7 @@ function Header() {
         <li
           onMouseEnter={makeIconWiggle}
           onMouseLeave={stopIconWiggle}
+          onClick={closeHeader}
           data-testid="header-nav-li-contact"
         >
           <Link to="/contact" className={activePage.contact}>
@@ -100,6 +108,12 @@ function Header() {
       </ul>
     </nav>
   );
+}
+
+function closeHeader() {
+  let labels = document.getElementsByClassName("header-label");
+  if (! labels[0].classList.contains("hidden"))
+    expandHeader()
 }
 
 /** Expands the header and moves the body with it */
@@ -179,9 +193,12 @@ function expandHamburger() {
   }
 
   let header = document.getElementById("header-ul");
-  if (!header.classList.contains("expanded")) {
+  if (!header.classList.contains("expanded"))
     header.classList.add("expanded");
-  } else header.classList.remove("expanded");
+  else header.classList.remove("expanded");
+
+  if (header.classList.contains("first-load"))
+    header.classList.remove("first-load");
 }
 
 /**

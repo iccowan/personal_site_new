@@ -3,6 +3,10 @@ nav li a:hover {
   background-color: #044343;
 }
 
+nav li a#expand-ham-container:hover {
+    background-color: #222222;
+}
+
 @media only screen and (min-width: 800px) {
   nav ul {
     box-shadow: 5px 10px 20px 5px #044343;
@@ -16,10 +20,6 @@ nav li a:hover {
     text-align: center;
 
     animation: slide-up-slide-in 2s;
-  }
-
-  nav ul.first-load {
-    animation: none;
   }
 
   @keyframes slide-out-slide-down {
@@ -165,12 +165,30 @@ nav li a:hover {
     animation: move-left 1s;
   }
 
-  button#expand-ham {
+  li#expand-ham-container {
     display: none;
   }
 }
 
 @media only screen and (max-width: 800px) {
+  @keyframes fade-out {
+    0% {
+        height: 94%;
+        width: 94%;
+        position: absolute;
+        left: 3%;
+        top: 3%;
+    }
+
+    100% {
+        height: 94%;
+        width: 94%;
+        position: absolute;
+        left: 3%;
+        top: 3%;
+        opacity: 0;
+    }
+  }
   nav ul {
     box-shadow: 0 10px 20px 5px #044343;
     position: relative;
@@ -184,13 +202,29 @@ nav li a:hover {
     padding: 0;
     overflow: hidden;
 
-    transition: height 0.25s ease-in-out;
+    animation: fade-out 1s ease-out;
   }
 
+  @keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    1% {
+        opacity: 0;
+        transform: translate(0, -100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+  }
   nav ul.expanded {
-    height: calc(60px * 4);
-    max-height: auto;
-    transition: height 0.25s ease-in-out;
+    height: 94%;
+    width: 94%;
+    position: absolute;
+    left: 3%;
+    top: 3%;
+    animation: fade-in 1s ease-in-out;
   }
 
   nav li {
@@ -200,8 +234,7 @@ nav li a:hover {
     margin: 0;
   }
 
-  nav li a,
-  button#expand-ham {
+  nav li a {
     display: block;
     border: none;
     cursor: pointer;
@@ -217,11 +250,11 @@ nav li a:hover {
     font-size: 18px;
   }
 
-  button#expand-ham {
-    width: 100%;
-  }
-
-  #expand-header-container {
+  li#expand-header-container {
     display: none;
   }
+}
+
+nav ul.first-load {
+    animation: none;
 }
