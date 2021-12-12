@@ -24,9 +24,7 @@ function Header() {
   return (
     <nav>
       <ul id="header-ul" className="first-load" data-testid="header-nav-ul">
-        <li
-          id="expand-ham-container"
-        >
+        <li id="expand-ham-container">
           <a
             href="#/"
             id="expand-ham"
@@ -112,8 +110,7 @@ function Header() {
 
 function closeHeader() {
   let labels = document.getElementsByClassName("header-label");
-  if (! labels[0].classList.contains("hidden"))
-    expandHeader()
+  if (!labels[0].classList.contains("hidden")) expandHeader();
 }
 
 /** Expands the header and moves the body with it */
@@ -193,8 +190,7 @@ function expandHamburger() {
   }
 
   let header = document.getElementById("header-ul");
-  if (!header.classList.contains("expanded"))
-    header.classList.add("expanded");
+  if (!header.classList.contains("expanded")) header.classList.add("expanded");
   else header.classList.remove("expanded");
 
   if (header.classList.contains("first-load"))
