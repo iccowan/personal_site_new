@@ -23,17 +23,21 @@ function Header() {
 
   return (
     <nav>
-      <ul id="header-ul" data-testid="header-nav-ul">
-        <button
-          id="expand-ham"
-          onClick={expandHamburger}
-          data-testid="header-nav-expandHamburger"
-        >
-          <i className="fas fa-bars"></i>
-        </button>
+      <ul id="header-ul" className="first-load" data-testid="header-nav-ul">
+        <li id="expand-ham-container">
+          <a
+            href="#/"
+            id="expand-ham"
+            onClick={expandHamburger}
+            data-testid="header-nav-expandHamburger"
+          >
+            <i className="fas fa-bars"></i>
+          </a>
+        </li>
         <li
           onMouseEnter={makeIconWiggle}
           onMouseLeave={stopIconWiggle}
+          onClick={closeHeader}
           data-testid="header-nav-li-ian-cowan"
         >
           <Link to="/" className={activePage.home}>
@@ -49,6 +53,7 @@ function Header() {
         <li
           onMouseEnter={makeIconWiggle}
           onMouseLeave={stopIconWiggle}
+          onClick={closeHeader}
           data-testid="header-nav-li-projects"
         >
           <Link to="/projects" className={activePage.projects}>
@@ -64,6 +69,7 @@ function Header() {
         <li
           onMouseEnter={makeIconWiggle}
           onMouseLeave={stopIconWiggle}
+          onClick={closeHeader}
           data-testid="header-nav-li-contact"
         >
           <Link to="/contact" className={activePage.contact}>
@@ -82,7 +88,8 @@ function Header() {
           onMouseLeave={stopArrowMove}
           data-testid="header-nav-li-collapseButton"
         >
-          <button
+          <a
+            href="#/"
             id="expand-header"
             onClick={expandHeader}
             data-testid="header-nav-collapseButton"
@@ -94,11 +101,16 @@ function Header() {
             >
               &nbsp;&nbsp;&nbsp;Collapse
             </span>
-          </button>
+          </a>
         </li>
       </ul>
     </nav>
   );
+}
+
+function closeHeader() {
+  let labels = document.getElementsByClassName("header-label");
+  if (!labels[0].classList.contains("hidden")) expandHeader();
 }
 
 /** Expands the header and moves the body with it */
@@ -108,6 +120,9 @@ function expandHeader() {
     // Expand the navbar
     let nav = document.getElementById("header-ul");
     nav.classList.add("expanded");
+
+    if (nav.classList.contains("first-load"))
+      nav.classList.remove("first-load");
 
     // Shrink the body
     let body = document.getElementsByClassName("body");
@@ -129,7 +144,7 @@ function expandHeader() {
       let collapseIcon = document.getElementById("collapseIcon");
       collapseIcon.classList.remove("fa-arrow-right");
       collapseIcon.classList.add("fa-arrow-left");
-    }, 250);
+    }, 1000);
   } else {
     // Expand the navbar
     let nav = document.getElementById("header-ul");
@@ -150,16 +165,18 @@ function expandHeader() {
     // Update the direction the arrow should be moving
     updateArrowMove();
 
-    // Hide the labels
-    for (var label of labels) {
-      label.classList.remove("not-hidden-fade");
-      label.classList.add("hidden");
-    }
+    setTimeout(function () {
+      // Hide the labels
+      for (var label of labels) {
+        label.classList.remove("not-hidden-fade");
+        label.classList.add("hidden");
+      }
 
-    // Change the collapse icon
-    let collapseIcon = document.getElementById("collapseIcon");
-    collapseIcon.classList.remove("fa-arrow-left");
-    collapseIcon.classList.add("fa-arrow-right");
+      // Change the collapse icon
+      let collapseIcon = document.getElementById("collapseIcon");
+      collapseIcon.classList.remove("fa-arrow-left");
+      collapseIcon.classList.add("fa-arrow-right");
+    }, 1000);
   }
 }
 
@@ -173,9 +190,11 @@ function expandHamburger() {
   }
 
   let header = document.getElementById("header-ul");
-  if (!header.classList.contains("expanded")) {
-    header.classList.add("expanded");
-  } else header.classList.remove("expanded");
+  if (!header.classList.contains("expanded")) header.classList.add("expanded");
+  else header.classList.remove("expanded");
+
+  if (header.classList.contains("first-load"))
+    header.classList.remove("first-load");
 }
 
 /**

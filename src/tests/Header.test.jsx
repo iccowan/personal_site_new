@@ -28,7 +28,7 @@ test("clicking the expand header button expands the header", () => {
   expect(screen.getByTestId("header-nav-ul").classList).toContain("expanded");
 });
 
-test("Ian Cowan label appears after 250ms when expanding the header", async () => {
+test("Ian Cowan label appears after 1s when expanding the header", async () => {
   render(
     <MemoryRouter>
       <Header />
@@ -42,13 +42,13 @@ test("Ian Cowan label appears after 250ms when expanding the header", async () =
     screen.getByTestId("header-nav-span-ian-cowan").classList.contains("hidden")
   ).toBeTruthy();
 
-  await new Promise((r) => setTimeout(r, 250));
+  await new Promise((r) => setTimeout(r, 1000));
   expect(
     screen.getByTestId("header-nav-span-ian-cowan").classList.contains("hidden")
   ).toBeFalsy();
 });
 
-test("Projects label appears after 250ms when expanding the header", async () => {
+test("Projects label appears after 1s when expanding the header", async () => {
   render(
     <MemoryRouter>
       <Header />
@@ -62,13 +62,13 @@ test("Projects label appears after 250ms when expanding the header", async () =>
     screen.getByTestId("header-nav-span-projects").classList.contains("hidden")
   ).toBeTruthy();
 
-  await new Promise((r) => setTimeout(r, 250));
+  await new Promise((r) => setTimeout(r, 1000));
   expect(
     screen.getByTestId("header-nav-span-projects").classList.contains("hidden")
   ).toBeFalsy();
 });
 
-test("Contact label appears after 250ms when expanding the header", async () => {
+test("Contact label appears after 1s when expanding the header", async () => {
   render(
     <MemoryRouter>
       <Header />
@@ -82,13 +82,13 @@ test("Contact label appears after 250ms when expanding the header", async () => 
     screen.getByTestId("header-nav-span-contact").classList.contains("hidden")
   ).toBeTruthy();
 
-  await new Promise((r) => setTimeout(r, 250));
+  await new Promise((r) => setTimeout(r, 1000));
   expect(
     screen.getByTestId("header-nav-span-contact").classList.contains("hidden")
   ).toBeFalsy();
 });
 
-test("Collapse label appears after 250ms when expanding the header", async () => {
+test("Collapse label appears after 1s when expanding the header", async () => {
   render(
     <MemoryRouter>
       <Header />
@@ -104,7 +104,7 @@ test("Collapse label appears after 250ms when expanding the header", async () =>
       .classList.contains("hidden")
   ).toBeTruthy();
 
-  await new Promise((r) => setTimeout(r, 250));
+  await new Promise((r) => setTimeout(r, 1000));
   expect(
     screen
       .getByTestId("header-nav-span-collapse-button")
