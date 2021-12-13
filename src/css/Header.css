@@ -3,7 +3,7 @@ nav li a:hover {
   background-color: #044343;
 }
 
-nav li a#expand-ham-container:hover {
+nav li#expand-ham-container a:hover {
   background-color: #222222;
 }
 

@@ -1,0 +1,62 @@
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes spin-back {
+    0% {
+        transform: rotate(405deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    div#links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        padding: 20px;
+        background-color: inherit;
+    }
+
+    div#links a {
+        display: block;
+        font-size: 1.5em;
+        text-align: center;
+        margin-top: 10px;
+        margin-right: 10px;
+        animation: spin-back 0.75s ease-in-out;
+    }
+
+    div#links a:hover {
+            transform: rotate(405deg);
+        animation: spin 0.75s ease-in-out;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    div#links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        padding: 10px;
+        background-color: inherit;
+    }
+
+    div#links a {
+        display: inline-block;
+        font-size: 1.5em;
+        text-align: center;
+        margin-top: 10px;
+        margin-right: 10px;
+        animation: spin-back 0.75s ease-in-out;
+    }
+}
