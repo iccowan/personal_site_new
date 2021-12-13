@@ -3,6 +3,7 @@ import "./css/App.css";
 import { Routes, Route, useParams } from "react-router-dom";
 
 import Header from "./components/Header";
+import Links from "./components/Links";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
@@ -20,6 +21,9 @@ function App() {
 
   return (
     <div>
+      <div id="links" className="not-hidden-fade">
+        <Links />
+      </div>
       <div className="header">
         <Header />
       </div>
@@ -29,7 +33,7 @@ function App() {
           <Route path="/projects" element={<RenderProjects />} />
           <Route path="/contact" element={<RenderContact />} />
           <Route
-            path="/external/:proto/:path"
+            path="/external/:proto/:path/:newTab"
             element={<RedirectToExternal />}
           />
           <Route path="*" element={<PageNotFound />} />
@@ -107,10 +111,23 @@ function RenderContact() {
   return Contact();
 }
 
-function RedirectToExternal(props) {
-  const { proto, path } = useParams();
+function RedirectToExternal() {
+  const { proto, path, newTab } = useParams();
   const href = proto + "://" + path;
-  window.location.href = href;
+  const isNewTab = newTab === "true";
+
+  if (proto === "mailto") {
+    window.open("mailto:" + path);
+    window.history.back();
+  } else if (!isNewTab) {
+    // Redirect in current tab
+    window.location.href = href;
+  } else {
+    // Redirect in a new tab and go back
+    window.open(href, "_blank");
+    window.history.back();
+  }
+
   return null;
 }
 

@@ -31,7 +31,7 @@ function Header() {
             onClick={expandHamburger}
             data-testid="header-nav-expandHamburger"
           >
-            <i className="fas fa-bars"></i>
+            <i id="hamburger-i" className="fas fa-bars"></i>
           </a>
         </li>
         <li
@@ -190,8 +190,19 @@ function expandHamburger() {
   }
 
   let header = document.getElementById("header-ul");
-  if (!header.classList.contains("expanded")) header.classList.add("expanded");
-  else header.classList.remove("expanded");
+  let links = document.getElementById("links");
+  let hamIcon = document.getElementById("hamburger-i");
+  if (!header.classList.contains("expanded")) {
+    header.classList.add("expanded");
+    if (links !== null) links.classList.add("hidden");
+    hamIcon.classList.remove("fa-bars");
+    hamIcon.classList.add("fa-times");
+  } else {
+    if (links !== null) links.classList.remove("hidden");
+    header.classList.remove("expanded");
+    hamIcon.classList.remove("fa-times");
+    hamIcon.classList.add("fa-bars");
+  }
 
   if (header.classList.contains("first-load"))
     header.classList.remove("first-load");
