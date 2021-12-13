@@ -72,7 +72,9 @@ function Home() {
             </p>
             <p>
               Check at{" "}
-              <Link to="/external/https/iancowan.me/false">https://iancowan.me</Link>{" "}
+              <Link to="/external/https/iancowan.me/false">
+                https://iancowan.me
+              </Link>{" "}
               for the live version when it becomes available
             </p>
           </Animator>
