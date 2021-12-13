@@ -119,7 +119,7 @@ function RedirectToExternal() {
   if (proto === "mailto") {
     window.open("mailto:" + path);
     window.history.back();
-  } else if (! isNewTab) {
+  } else if (!isNewTab) {
     // Redirect in current tab
     window.location.href = href;
   } else {

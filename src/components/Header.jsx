@@ -193,7 +193,7 @@ function expandHamburger() {
   let links = document.getElementById("links");
   let hamIcon = document.getElementById("hamburger-i");
   if (!header.classList.contains("expanded")) {
-    header.classList.add("expanded")
+    header.classList.add("expanded");
     if (links !== null) links.classList.add("hidden");
     hamIcon.classList.remove("fa-bars");
     hamIcon.classList.add("fa-times");
