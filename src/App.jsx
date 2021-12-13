@@ -111,21 +111,21 @@ function RenderContact() {
   return Contact();
 }
 
-function RedirectToExternal() {
+function RedirectToExternal(_params) {
   const { proto, path, newTab } = useParams();
   const href = proto + "://" + path;
   const isNewTab = newTab === "true";
 
   if (proto === "mailto") {
-    window.open("mailto:" + path);
     window.history.back();
+    window.open("mailto:" + path, "emailWindow-" + path);
   } else if (!isNewTab) {
     // Redirect in current tab
     window.location.href = href;
   } else {
     // Redirect in a new tab and go back
-    window.open(href, "_blank");
     window.history.back();
+    window.open(href, "newTab-" + path);
   }
 
   return null;
